@@ -1,0 +1,24 @@
+{
+  "name": "zhangsan",
+  "age": 14,
+  "isMan": true,
+  "address": {
+    "street": "含光门",
+    "city": "西安",
+    "coutry": "中国"
+  },
+  "link": [
+    {
+      "name": "bilibili",
+      "url": "www.bilibili.com"
+    },
+    {
+      "name": "baidu",
+      "url": "www.baidu.com"
+    },
+    {
+      "name": "google",
+      "url": "www.google.com"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--使用axios在Vue中发送异步的请求-->
+<div id="vue">
+    <div v-for="(info,name) in infos">
+        {{name}}:{{info}}
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#vue",
+        data() {
+            return {
+                infos: {}
+            }
+        },
+        mounted() {//钩子函数
+            axios.get('../data.json').then(response => (
+                this.infos = response.data
+            ))
+        },
+        create: function () {
+            this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+        }
+    })
+</script>
+</body>
+</html>
