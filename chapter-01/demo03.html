@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--测试for循环-->
+<div id="app">
+    <!--使用in-->
+    <ol>
+        <li v-for="messages in todos" v-bind:key="messages.message">
+            {{messages.message}}
+        </li>
+    </ol>
+    <!--使用of-->
+    <ol>
+        <li v-for="messages of todos">
+            {{messages.message}}
+        </li>
+    </ol>
+    <!--使用带下标的写法-->
+    <ol>
+        <li v-for="(messages,index) in todos">
+            {{parents}} - {{index}} -{{messages.message}}
+        </li>
+    </ol>
+    <!--遍历对象中的property-->
+    <ol>
+        <li v-for="objects in object">
+            {{objects}}
+        </li>
+    </ol>
+    <!--遍历对象中的属性名和属性值,注意在v-for的括号中属性值在前属性名在后-->
+    <ol>
+        <li v-for="(value,name) in object">
+            {{name}}:{{value}}
+        </li>
+    </ol>
+    <!--   遍历对象中的属性名和属性值和下标(从0开始) -->
+    <ol>
+        <li v-for="(value,name,index) in object">
+            {{index+1}}、{{name}}:{{value}}
+        </li>
+    </ol>
+</div>
+
+
+<!--1、导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        // Model: 数据
+        data: {
+            parents: 'parents',
+            todos: [
+                {message: 'zhangsan'},
+                {message: 'lisi'},
+                {message: 'wangwu'},
+                {message: 'zhaoliu'},
+            ],
+            object: {
+                name: 'zhangsan',
+                age: 14,
+                birth: '1997/07/24'
+            }
+        }
+    });
+</script>
+</body>
+</html>

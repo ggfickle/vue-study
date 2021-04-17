@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--第一个程序-->
+<!--view层模版-->
+<div id="app">
+    {{message}}
+    <span v-bind:title="myinfo">
+        <h1>hello</h1>
+    </span>
+</div>
+
+<!--1、导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        // Model: 数据
+        data: {
+            message: "hello,vue!",
+            myinfo: '页面加载于' + new Date().toLocaleString()
+        }
+    });
+</script>
+</body>
+</html>

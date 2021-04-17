@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+v-model 会忽略所有表单元素的 value、checked、selected attribute 的初始值而总是将 Vue 实例的数据作为数据来源。
+你应该通过 JavaScript 在组件的 data 选项中声明初始值。
+-->
+<!--此时绑定的是input中的value的值-->
+<div id="app">
+    性别：
+    <input type="radio" name="sex" value="男" v-model="bindvalue">男
+    <input type="radio" name="sex" value="女" v-model="bindvalue">女
+    <p>选中了：{{bindvalue}}</p>
+
+    <!--以前使用单选按钮时，是需要设置 name 属性的，现在用 v-model 的话，就不用设置 name 属性了。-->
+    性别：
+    <input type="radio" value="男" v-model="bindvalue">男
+    <input type="radio" value="女" v-model="bindvalue">女
+    <p>选中了：{{bindvalue}}</p>
+
+    <select v-model="selectValue">
+        <option value="" disabled>--请选择--</option>
+        <option value="A">A</option>
+        <option>B</option><!--不写value默认将option的文本作为value-->
+        <option>C</option>
+    </select>
+    <p>下拉框选中了：{{selectValue}}</p>
+</div>
+
+<!--1、导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            //可以在设定的值时绑定初始值
+            bindvalue: '女',
+            selectValue: ''
+        }
+    });
+</script>
+</body>
+</html>

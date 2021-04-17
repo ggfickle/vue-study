@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-on:click="dodo">
+        <!--stop 阻止事件继续传播        只打印11-->
+        <button v-on:click.stop="doThis">阻止单击事件继续传播</button>
+        <!--        将打印11 22-->
+        <button v-on:click="doThis">不阻止单击事件继续传播</button>
+    </div>
+
+    <!-- 提交事件不再重载页面 -->
+    <form v-on:submit.prevent="onSubmit">
+        <input type="text" v-model="message">
+        <input type="submit" value="submit">
+    </form>
+
+    <!-- 修饰符可以串联 -->
+    <a v-on:click.stop.prevent="doThat"></a>
+
+    <!-- 只有修饰符 -->
+    <form v-on:submit.prevent></form>
+
+    <!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+    <!-- 而不会等待 `onScroll` 完成  -->
+    <!-- 这其中包含 `event.preventDefault()` 的情况 -->
+    <div v-on:scroll.passive="onScroll">...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'inputname'
+        },
+        methods: {
+            doThis: function () {
+                console.log('11')
+            },
+            dodo: function () {
+                console.log('22')
+            },
+            onSubmit: function () {
+                console.log('submit')
+            },
+            onScroll: function () {
+                console.log('222')
+            }
+        }
+    })
+</script>
+</body>
+</html>

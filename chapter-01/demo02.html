@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--测试IF else-->
+<div id="app">
+    <!--    一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。
+    因此，如果需要非常频繁地切换，则使用 v-show 较好；
+    如果在运行时条件很少改变，则使用 v-if 较好。-->
+    <p v-if="flag">ok</p>
+    <p v-else>no</p>
+    <p v-if="type == 'A'">A</p>
+    <p v-else-if="type == 'B'">B</p>
+    <p v-else-if="type == 'C'">C</p>
+    <p v-else>D</p>
+
+
+    <!--    带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS property display-->
+    <h1 v-show="flag">Hello!</h1>
+</div>
+<!--1、导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        // Model: 数据
+        data: {
+            flag: false,
+            type: 'B'
+        }
+    });
+</script>
+</body>
+</html>

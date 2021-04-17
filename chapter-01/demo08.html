@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--          此处的text-danger加上了引号是因为'-'符号需要引号包裹，不然出现错误-->
+<div id="app">
+    <div
+            class="static"
+            v-bind:class="{ active: isActive, 'text-danger': hasError }"
+    >111
+    </div>
+    <!--    我们可以把一个数组传给 v-bind:class，以应用一个 class 列表：-->
+    <div v-bind:class="[activeClass, errorClass]"></div>
+    <!--    如果你也想根据条件切换列表中的 class，可以用三元表达式：-->
+    <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+    <!--    在数组语法中也可以使用对象语法-->
+    <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+    <!--我们也可以在这里绑定一个返回对象的计算属性。这是一个常用且强大的模式：-->
+    <div v-bind:class="classObject"></div>
+</div>
+
+<!--1、导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            hasError: false,
+            activeClass: 'active',
+            errorClass: 'text-danger',
+            error: null
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
